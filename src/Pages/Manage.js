@@ -1,9 +1,21 @@
-import { React } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Container, Box, Typography, Grid, TextField,  } from '@mui/material';
+import UserRecord from '../component/UserRecord';
+import users from "../Data/Users";
 
 function Manage() {
   const { register, handleSubmit } = useForm();
+  const [alert, setAlert] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [alertContent, setAlertContent] = useState('');
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    // Set users directly since they are imported, no fetch needed
+    setUserData(users);
+    console.log(userData);
+  }, []);
 
   const onSubmit = async (data) => {
   };
@@ -11,9 +23,10 @@ function Manage() {
     <Container>
       <Box px={3} py={2}>
       <Typography variant="h6" align="center" margin="dense">
-            Eneter New User
+            Users
           </Typography>
-          <form
+          <UserRecord users={userData} />
+          {/* <form
             action=""
             id="order"
             method="Post"
@@ -102,7 +115,7 @@ function Manage() {
                   />
                 </Grid>
               </Grid>
-          </form>
+          </form> */}
       </Box>
     </Container>
   );

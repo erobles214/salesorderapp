@@ -5,17 +5,13 @@ import UserRecord from '../component/UserRecord';
 import users from "../Data/Users";
 
 function Manage() {
-  const { register, handleSubmit } = useForm();
-  const [alert, setAlert] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [alertContent, setAlertContent] = useState('');
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     // Set users directly since they are imported, no fetch needed
     setUserData(users);
     console.log(userData);
-  }, []);
+  }, [userData]);
 
   const onSubmit = async (data) => {
   };

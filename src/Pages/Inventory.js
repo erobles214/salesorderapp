@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Container, Box, Typography, Grid, TextField,  } from '@mui/material';
-import UserRecord from '../component/UserRecord';
-import InventoryData from "../Data/Users";
+import InventoryRecord from '../component/InventoryRecord';
+import data from "../Data/Inventory";
 
 function Inventory() {
   const [inventoryData, setInventoryData] = useState([]);
 
   useEffect(() => {
-    setInventoryData(InventoryData);
+    setInventoryData(data);
     console.log(inventoryData)
-  });
+  }, [inventoryData]);
+
   return (
     <Container>
     <Box px={3} py={2}>
     <Typography variant="h6" align="center" margin="dense">
           Users
         </Typography>
-        <UserRecord users={inventoryData} />
+        <InventoryRecord item={inventoryData} />
     </Box>
   </Container>
   );

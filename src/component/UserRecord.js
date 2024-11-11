@@ -1,13 +1,31 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Container, Box, InputLabel, Grid, ButtonGroup, Button, TextField } from '@mui/material';
 import UserModal from './UserModal'; 
+import axios from 'axios';
+import { GET_USERS } from "../API/requestGet";
 
-const UserRecord = ({ users }) => {
-    console.log('Users:', users);
+const UserRecord = () => {
     const [open, setOpen] = useState(false);
     const [modalData, setModalData] = useState(null);
     const [modalType, setModalType] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
+    const [UserData, setData] = useState([]);
+
+    useEffect(() => {
+        // setInventoryData(InventoryData);
+        const fetchData = async () => {
+        try{
+            const response = await axios.get(GET_USERS,);
+            setData(response.data);
+          } catch (error) {
+    
+          } finally {
+    
+          }
+        // console.log(inventoryData)    
+        };
+        fetchData();
+      }, []);
 
     // Function to open modal and set modal data
     const handleOpenModal = (type, user) => {
@@ -29,7 +47,7 @@ const UserRecord = ({ users }) => {
     }
 
     // Filter users based on the search term
-    const filteredUsers = users.filter(user => 
+    const filteredUsers = UserData.filter(user => 
     `${user.firstName} ${user.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
      user.email.toLocaleLowerCase().includes(searchTerm.toLowerCase()) ||
      user.userName.toLocaleLowerCase().includes(searchTerm.toLowerCase)

@@ -11,7 +11,7 @@ const postRequest = (data, call) => {
       // eslint-disable-next-line no-case-declarations
       const requestOrder = axios({
         method: 'post',
-        url: 'http://myapiproject.runasp.net/api/Order/Add/Order',
+        url: 'https://localhost:44301/api/Order/Add/Order',
         // url: 'https://localhost:44301/api/Order/Add/Order',
         data, // you are sending body instead
         headers: {
@@ -27,7 +27,7 @@ const postRequest = (data, call) => {
       // eslint-disable-next-line no-case-declarations
       const requestMaterial = axios({
         method: 'post',
-        url: 'http://myapiproject.runasp.net/api/Order/Add/Materials',
+        url: 'http://localhost:3000/api/Order/Add/Materials',
         // url: 'https://localhost:44301/api/Order/Add/Materials',
         data, // you are sending body instead
         headers: {
@@ -43,7 +43,7 @@ const postRequest = (data, call) => {
       // eslint-disable-next-line no-case-declarations
       const requestLabor = axios({
         method: 'post',
-        url: 'http://myapiproject.runasp.net/api/Order/Add/Labor',
+        url: 'http://localhost:3000/api/Order/Add/Labor',
         // url: 'https://localhost:44301/api/Order/Add/Labor',
         data, // you are sending body instead
         headers: {

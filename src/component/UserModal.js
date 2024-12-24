@@ -1,7 +1,7 @@
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from '@mui/material';
+import { Dialog, DialogContent, DialogActions, Button, Typography } from '@mui/material';
 import EditUser from '../Pages/EditUser';
 
-const UserModal = ({ open, handleClose, modalType, modalData }) => {
+const UserModal = ({ open, handleClose, handleDataUpdated, modalType, modalData }) => {
     const renderModalContent = () => {
         if (!modalData) return null;
 
@@ -12,7 +12,10 @@ const UserModal = ({ open, handleClose, modalType, modalData }) => {
                     <DialogContent>
                         <Typography>Edit User: {modalData.firstName} {modalData.lastName}</Typography>
                      <EditUser
-                            user={[modalData]}
+                            user={[modalData]}    
+                            onSuccess={() => {
+                                handleDataUpdated();
+                            }}
                         ></EditUser>
                     </DialogContent>                    
                 );

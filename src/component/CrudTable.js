@@ -26,6 +26,13 @@ const CrudTable = ({ data }) => {
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
 
+  const handleSaveRowEdits = async ({existEditingMode, row, values }) => {
+    if(!Object.keys(validationErrors).length){
+      tableData[row.index] = values;
+      setTableData([...tableData]);
+      existEditingMode();
+    }
+  };
   const getCommonEditTextFieldProps = useCallback((cell) => {
     return {
       error: !!validationErrors[cell.id],
@@ -128,7 +135,7 @@ const CrudTable = ({ data }) => {
         editingMode="modal" // default
         enableColumnOrdering
         enableEditing
-        // onEditingRowSave={handleSaveRowEdits}
+        onEditingRowSave={handleSaveRowEdits}
         // onEditingRowCancel={handleCancelRowEdits}
         renderRowActions={({ row, table }) => (
           <Box sx={{ display: 'flex', gap: '1rem' }}>

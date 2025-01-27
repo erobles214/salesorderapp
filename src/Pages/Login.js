@@ -80,20 +80,29 @@ const Login = () => {
     const request = JSON.stringify({ email, password });
     try {
        
-      const response = await authaticate(request);
+      const token = localStorage.getItem('token')
 
-      if (response.status === 200) {
-        // Assuming your API returns a token upon successful login
-        const token = response.data.token;
+      if(token !== null && token.trim() !== "")
+      {
+          history('/dashboard');
+      }
+      else{
+          const response = await authaticate(request);
 
-        // Store the token in local storage or a state management system
-        localStorage.setItem('token', token);
-        
-        // Successful login, redirect to dashboard
-        history('/dashboard');
-      } else {
-        // Handle other HTTP statuses (e.g., show error message)
-       
+          if (response.status === 200) {
+            // Assuming your API returns a token upon successful login
+            const token = response.data.token;
+
+            // Store the token in local storage or a state management system
+            localStorage.setItem('token', token);
+            
+            // Successful login, redirect to dashboard
+            history('/dashboard');
+          
+          } else {
+            // Handle other HTTP statuses (e.g., show error message)
+          
+          }
       }
     } catch (error) {
       // console.error('Login failed:', response.statusText);

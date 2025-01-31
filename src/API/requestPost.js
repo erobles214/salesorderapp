@@ -71,6 +71,18 @@ const postRequest = (data, call) => {
           },
         });
         return requestInvUpdate;
+      case 'PostUpdtWrkOrd':
+        const requestUpdtWrkOrd = axios({
+          method: 'post',
+          url: 'https://localhost:44301/api/Order/UpdateWorkOrder',
+          data,
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': '*/*'
+          },
+        });
+        return requestUpdtWrkOrd;
+
   }
   // if (call === 'PostOrder') {
   //   const request = axios({

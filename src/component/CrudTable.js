@@ -15,6 +15,7 @@ import {
   Tooltip,
 } from '@mui/material';
 import { Edit, Engineering } from '@mui/icons-material';
+import postRequest from '../API/requestPost';
 // import { object } from 'yup';
 // import data from '../Data/orderData.json';
 
@@ -26,13 +27,35 @@ const CrudTable = ({ data }) => {
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
 
-  const handleSaveRowEdits = async ({existEditingMode, row, values }) => {
+  const handleSaveRowEdits = async ({exitEditingMode, row, values }) => {
     if(!Object.keys(validationErrors).length){
       tableData[row.index] = values;
+          const call = 'PostUpdtWrkOrd'
+          try{
+            const reponse = await postRequest(tableData[row.index], call);
+            if(reponse.status === 200){
+              // setAlertContent("Item updated successfully");
+              // setSuccess(true);
+              
+              // if(onSuccess)
+              // {
+              //   onSuccess();
+              // }
+            }
+          }
+          catch{
+            // setAlertContent('Bad Response');
+            // setAlert(true);
+          }
       setTableData([...tableData]);
-      existEditingMode();
+      exitEditingMode();
     }
   };
+
+  const handleCancelRowEdits = () => {
+    setValidationErrors({});
+  };
+
   const getCommonEditTextFieldProps = useCallback((cell) => {
     return {
       error: !!validationErrors[cell.id],
@@ -72,8 +95,8 @@ const CrudTable = ({ data }) => {
   const columns = useMemo(
     () => [
       {
-        accessorKey: 'id', // access nested data with dot notation
-        header: 'Work Order Id',
+        accessorKey: 'orderId', // access nested data with dot notation
+        header: 'Order Id',
         muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
           ...getCommonEditTextFieldProps(cell),
         }),
@@ -136,7 +159,7 @@ const CrudTable = ({ data }) => {
         enableColumnOrdering
         enableEditing
         onEditingRowSave={handleSaveRowEdits}
-        // onEditingRowCancel={handleCancelRowEdits}
+        onEditingRowCancel={handleCancelRowEdits}
         renderRowActions={({ row, table }) => (
           <Box sx={{ display: 'flex', gap: '1rem' }}>
             <Tooltip arrow placement="left" title="Edit">

@@ -20,6 +20,7 @@ import ListItemText from '@mui/material/ListItemText';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import Container from '@mui/material/Container';
 import Home from './Home';
 import OrderSheet from './OrderSheet';
@@ -130,23 +131,6 @@ const DashboardPage = () => {
   };
 
   return (
-    // <div>
-    //   <h2>Dashboard</h2>
-
-    //   {/* Your dashboard content goes here */}
-
-    //   <nav>
-    //     <ul>
-    //       {/* Example route links */}
-    //       <li>
-    //         <Link to="/dashboard/profile">Profile</Link>
-    //       </li>
-    //       <li>
-    //         <Link to="/dashboard/settings">Settings</Link>
-    //       </li>
-    //     </ul>
-    //   </nav>
-    // </div>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="absolute" open={open}>
@@ -190,7 +174,7 @@ const DashboardPage = () => {
             <ListItemLink
                 to="/home"
                 primary="Home"
-                icon={<BorderColorIcon />}
+                icon={<DashboardIcon />}
               />
             <ListItemLink
                 to="/orders"

@@ -19,7 +19,7 @@ function Home() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://localhost:44301/api/Analytic/Get/dailyProjects',
+          'http://www.myapiproject.runasp.net/api/Analytic/Get/dailyProjects',
         ); // Replace with your API endpoint
         setData(response.data);
         sessionStorage.setItem('myData', JSON.stringify(response.data));

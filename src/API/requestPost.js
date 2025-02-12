@@ -11,7 +11,7 @@ const postRequest = (data, call) => {
       // eslint-disable-next-line no-case-declarations
       const requestOrder = axios({
         method: 'post',
-        url: 'https://localhost:44301/api/Order/Add/Order',
+        url: 'https://myapiapplication-live.premiumasp.net/api/Order/Add/Order',
         // url: 'https://localhost:44301/api/Order/Add/Order',
         data, // you are sending body instead
         headers: {
@@ -25,7 +25,7 @@ const postRequest = (data, call) => {
       // eslint-disable-next-line no-case-declarations
       const requestMaterial = axios({
         method: 'post',
-        url: 'https://localhost:44301/api/Order/Add/Materials',
+        url: 'https://myapiapplication-live.premiumasp.net/api/Order/Add/Materials',
         // url: 'https://localhost:44301/api/Order/Add/Materials',
         data, // you are sending body instead
         headers: {
@@ -39,7 +39,7 @@ const postRequest = (data, call) => {
       // eslint-disable-next-line no-case-declarations
       const requestLabor = axios({
         method: 'post',
-        url: 'https://localhost:44301/api/Order/Add/Labor',
+        url: 'https://myapiapplication-live.premiumasp.net/api/Order/Add/Labor',
         // url: 'https://localhost:44301/api/Order/Add/Labor',
         data, // you are sending body instead
         headers: {
@@ -52,7 +52,7 @@ const postRequest = (data, call) => {
       case 'PostUpdtUser':
         const requestUserUpdate = axios({
           method: 'post',
-          url: 'https://localhost:44301/api/User/UpdateUsers',
+          url: 'https://myapiapplication-live.premiumasp.net/api/User/UpdateUsers',
           data,
           headers: {
             'Content-Type': 'application/json',   
@@ -63,7 +63,7 @@ const postRequest = (data, call) => {
       case 'PostUpdtInv':
         const requestInvUpdate = axios({
           method: 'post',
-          url: 'https://localhost:44301/api/Inventory/UpdateInventory',
+          url: 'https://myapiapplication-live.premiumasp.net/api/Inventory/UpdateInventory',
           data,
           headers: {
             'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const postRequest = (data, call) => {
       case 'PostUpdtWrkOrd':
         const requestUpdtWrkOrd = axios({
           method: 'post',
-          url: 'https://localhost:44301/api/Order/UpdateWorkOrder',
+          url: 'https://myapiapplication-live.premiumasp.net/api/Order/UpdateWorkOrder',
           data,
           headers: {
             'Content-Type': 'application/json',
